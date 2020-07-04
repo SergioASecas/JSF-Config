@@ -1,0 +1,4 @@
+beans\configuracion\ConfigurationJSF.class
+beans\backing\vacanteForm.class
+beans\model\Camdidato.class
+beans\lifeCicle\DebuggerListener.class
