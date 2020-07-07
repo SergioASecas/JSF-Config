@@ -9,8 +9,17 @@ import org.apache.logging.log4j.Logger;
 @Named
 @RequestScoped
 public class Camdidato {
-	private String nombre = "introduce Tu nombre";
+	private String nombre;
+	private String apellido;
+
+	private String salarioDeseado;
+
 	Logger log = LogManager.getRootLogger();
+
+	public Camdidato(){
+		log.info("Creando el objeto Candidato");
+		this.setNombre("Introduce tu nombre");
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -18,7 +27,24 @@ public class Camdidato {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-		log.info("Modificando candidato"+this.nombre);
+		log.info("Modificando la propiedad de nombre:" + this.nombre);
 	}
-	
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+		log.info("Modificando la propiedad de apellido:" + this.apellido);
+	}
+
+	public String getSalarioDeseado() {
+		return salarioDeseado;
+	}
+
+	public void setSalarioDeseado(String salarioDeseado) {
+		this.salarioDeseado = salarioDeseado;
+		log.info("Modificando la propiedad de sueldoDeseado" + this.salarioDeseado);
+	}
 }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	 xmlns:h="http://java.sun.com/jsf/html"	
+	 xmlns:h="http://java.sun.com/jsf/html"
+	   xmlns:f="http://xmlns.jcp.org/jsf/core"
 	 	>
 <head>
 <title>Hola Mundo JSF</title>
@@ -10,9 +11,39 @@
 	<h:form>
 		<table>
 			<tr>
-				<td><h:outputLabel for="nombre" value="Nombre:"></h:outputLabel></td>
-				<td><h:inputText id="nombre" value="#{camdidato.nombre}"></h:inputText></td>
-				<td><h:message for="nombre"></h:message></td>
+				<td>
+					<h:outputLabel for="nombre" value="Nombre:"></h:outputLabel>
+				</td>
+				<td>
+					<h:inputText id="nombre" required="true" value="#{camdidato.nombre}"></h:inputText>
+				</td>
+				<td>
+					<h:message for="nombre"></h:message>
+				</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel for="apellido" value="Apellido:"></h:outputLabel>
+					</td>
+					<td>
+						<h:inputText id="apellido" required="true" value="#{camdidato.apellido}"></h:inputText>
+					</td>
+					<td>
+						<h:message for="apellido"></h:message>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel for="salarioDeseado" value="Salario Deseado:" />
+					</td>
+					<td>
+						<h:inputText id="salarioDeseado" required="true" value="#{camdidato.salarioDeseado}">
+							<f:validateLongRange minimum="500" maximum="5000" />
+						</h:inputText>
+					</td>
+					<td>
+						<h:message for="salarioDeseado"></h:message>
+					</td>
 			</tr>
 		</table>
 		<h:commandButton action="#{vacanteForm.enviar}" value="Enviar"></h:commandButton>
