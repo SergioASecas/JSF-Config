@@ -6,12 +6,24 @@
        					http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
 	version="2.3">
        						
-       						
+     <!-- Configuración lifecycle de la clase Debugger Listener-->  						
 	<lifecycle>
 		<phase-listener>
 			beans.lifeCicle.DebuggerListener
 		</phase-listener>
 	</lifecycle>
+
+	<!--Configuración de mensajes, llamado archivo mensajes.properties y jsf.properties, y variable msgs para utilizar en xhtml -->
+	<application>
+		<locale-config>
+			<default-locale>en</default-locale>
+		</locale-config>
+		<resource-bundle>
+			<base-name>mensajes</base-name>
+			<var>msgs</var>
+		</resource-bundle>
+		<message-bundle>jsf</message-bundle>
+	</application>
 	
 
 </faces-config>
