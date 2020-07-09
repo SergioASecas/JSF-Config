@@ -6,12 +6,14 @@ import javax.inject.Named;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
+import javax.faces.event.ActionEvent;
 import javax.faces.component.UIInput;
 import javax.faces.component.UIViewRoot;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import beans.model.Camdidato;
+
+
 
 @Named
 @RequestScoped
@@ -19,6 +21,8 @@ public class vacanteForm {
 	
 	@Inject
 	private Camdidato candidato;
+	private boolean comentarioEnviado;
+	
 	Logger log = LogManager.getRootLogger();
 	
 	public vacanteForm(){
@@ -29,6 +33,7 @@ public class vacanteForm {
 		this.candidato = candidato;
 	}
 
+	//Acción del Commandbutton del formulario XHTML para enviar. 	
 	public String enviar() {
 		if (this.candidato.getNombre().equals("Juan")) {
 			if (this.candidato.getApellido().equals("Perez")) {
@@ -48,7 +53,6 @@ public class vacanteForm {
 	}
 
 	//Implementando cambios de valor de los campos ciudad y colonia de acuerdo al código postal 03810 ingresado
-
 	public void codigoPostalListener(ValueChangeEvent valueChangeEvent){
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		UIViewRoot uiViewroot = facesContext.getViewRoot();
@@ -67,4 +71,19 @@ public class vacanteForm {
 			facesContext.renderResponse();
 		}
 	}
+
+	//Cambiar valores de actionEvent para el CommandLink de mostrar TextArea
+	public void ocultarComentario(ActionEvent actionEvent) {
+		this.comentarioEnviado = !this.comentarioEnviado;
+	}
+
+	public boolean isComentarioEnviado() {
+		return comentarioEnviado;
+	}
+
+	public void setComentarioEnviado(boolean comentarioEnviado) {
+		this.comentarioEnviado = comentarioEnviado;
+	}
+
+
 }
