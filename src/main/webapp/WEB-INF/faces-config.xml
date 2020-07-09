@@ -16,7 +16,7 @@
 	<!--Configuración de mensajes, llamado archivo mensajes.properties y jsf.properties, y variable msgs para utilizar en xhtml -->
 	<application>
 		<locale-config>
-			<default-locale>en</default-locale>
+			<default-locale>es</default-locale>
 		</locale-config>
 		<resource-bundle>
 			<base-name>mensajes</base-name>

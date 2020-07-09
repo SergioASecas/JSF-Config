@@ -7,8 +7,7 @@
 <title>Hola Mundo JSF</title>
 </head>
 <body>
-	<h:form>
-		
+	<h:form id="vacanteForm">		
 		<table>
 			<tr>
 				<td><h:outputLabel for="nombre" value="#{msgs['vacanteForm.nombre']}"></h:outputLabel></td>
@@ -32,6 +31,22 @@
 				<td><h:inputText id="fechaNacimiento" required="true" value="#{camdidato.fechaNacimiento}">
 					<f:convertDateTime pattern="dd/MM/yyyy" type="date"/></h:inputText></td>
 				<td><h:message for="fechaNacimiento"></h:message></td>	
+			</tr>
+			<tr>
+				<td><h:outputLabel for="codigoPostal" value="#{msgs['vacanteForm.codigoPostal']}"></h:outputLabel></td>
+				<td><h:inputText id="codigoPostal" inmediate="true" onchange="this.form.submit()" required="true" value="#{camdidato.codigoPostal}"
+					valueChangeListener="#{vacanteForm.codigoPostalListener}"></h:inputText></td>
+				<td><h:message for="codigoPostal"></h:message></td>		
+			</tr>
+			<tr>
+				<td><h:outputLabel for="colonia" value="#{msgs['vacanteForm.colonia']}"></h:outputLabel></td>
+				<td><h:inputText id="colonia" required="true" value="#{camdidato.colonia}"></h:inputText></td>
+				<td><h:message for="colonia"></h:message></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="ciudad" value="#{msgs['vacanteForm.ciudad']}"></h:outputLabel></td>
+				<td><h:inputText id="ciudad"  required="true" value="#{camdidato.ciudad}"></h:inputText></td>
+				<td><h:message for="ciudad"></h:message></td>
 			</tr>
 		</table>
 		<h:commandButton action="#{vacanteForm.enviar}" value="#{msgs['vacanteForm.enviar']}"></h:commandButton>

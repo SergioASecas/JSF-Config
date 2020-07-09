@@ -5,6 +5,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
+import javax.faces.component.UIInput;
+import javax.faces.component.UIViewRoot;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -41,6 +44,27 @@ public class vacanteForm {
 		} else {
 			log.info("Entrando al caso de fallo");
 			return "fallo";
+		}
+	}
+
+	//Implementando cambios de valor de los campos ciudad y colonia de acuerdo al código postal 03810 ingresado
+
+	public void codigoPostalListener(ValueChangeEvent valueChangeEvent){
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		UIViewRoot uiViewroot = facesContext.getViewRoot();
+		String nuevoCodigoPostal = (String)valueChangeEvent.getNewValue();
+		if ("03810".equals(nuevoCodigoPostal)) {
+			UIInput coloniaInputText = (UIInput)uiViewroot.findComponent("vacanteForm:colonia");
+			String nuevaColonia = "Napoles";
+			coloniaInputText.setValue(nuevaColonia);
+			coloniaInputText.setSubmittedValue(nuevaColonia);
+
+			UIInput ciudadInputText = (UIInput) uiViewroot.findComponent("vacanteForm:ciudad");
+			String nuevaCiudad = "Ciudad de Mexico";
+			ciudadInputText.setValue(nuevaCiudad);
+			ciudadInputText.setSubmittedValue(nuevaCiudad);
+
+			facesContext.renderResponse();
 		}
 	}
 }
